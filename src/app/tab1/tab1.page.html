@@ -1,17 +1,37 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color = "primary">
     <ion-title>
-      Tab 1
+      Home
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="openSettings()">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+    <ion-toolbar color = "primary">
+      <ion-searchbar show-clear-button="focus" [(ngModel)]="inputValue" (search)="jokeSearch()"></ion-searchbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="jokeSearch()">
+          Search
+          <ion-icon name="search"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+
+    <ion-list *ngFor="let item of jokes" (click)="favoriteFunc(item.joke)">
+      <ion-item>
+        {{item.joke}}
+        <ion-badge slot="end">
+          <ion-icon *ngIf="item.favorite === 'true'" name="star" color="warning"></ion-icon>
+          <ion-icon *ngIf="item.favorite === 'false'" name="star" color="white"></ion-icon>
+        </ion-badge>
+      </ion-item>
+    </ion-list>
 </ion-content>
+
