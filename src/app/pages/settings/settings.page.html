@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color=primary>
+    <ion-title>Information</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon slot="icon-only" name="exit"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="labels">
+  <label>Jokes generated: {{this.jokecount}}</label>
+  <label>Joke requests: {{this.calls}}</label>
+  <label>Favorite jokes: {{this.favorite.length}}</label>
+  </div>
+  <ion-button fill="clear" (click)="clerData()">
+    Delete data!
+  </ion-button>
+</ion-content>
+
